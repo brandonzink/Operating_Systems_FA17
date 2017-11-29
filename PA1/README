@@ -1,0 +1,24 @@
+Brandon Zink
+brzi7405@colorado.edu
+
+WHAT EACH FILE CONTAINS
+helloworld_test.c and simpleadd_test.c contain the c code for testing the corresponding functions and the printf statements
+simple_add.c contains the code for the systemcall of adding two numbers together
+Makefile contains the kernel call for the added functions for the build system
+syscall_64.tbl contains the new system calls and their # for helloworld and simpleadd
+syscalls.h contains all of the system calls as a header file for the helloworld and simpleadd
+syslog contains the last few hundred output lines in terminal, which was just the last dmesg
+
+WHERE EACH FILE SHOULD BE LOCATED
+helloworld_test.c and simpleadd_test.c should be located in /home
+simple_add.c (and helloworld.c, which was not asked to be included) and Makefile should be located in /arch/x86/kernel/
+syscall_64.tbl should be located in arch/x86/entry/syscalls
+syscalls.h should be located in include/linux/
+syslog should be located in /var/log/
+
+HOW TO BUILD/RUN
+In order to build and run the simple_add, make sure that the simple_add.c and simpleadd_test.c are in
+their appropriate folders as indicated above. Then, while in /home/, run command "sudo simpleadd_test.c gcc"
+to compile to .c program. This should not print anything. Then run command "./a.out" and this should print
+number1 + number2 = result as defined in the test file (set the numbers in the test file). You can then type "dmesg"
+and see number 1, then number 2, then number1 + number2 = result highlighted in red.
