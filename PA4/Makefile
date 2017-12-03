@@ -11,20 +11,18 @@ LFLAGS = -g -Wall -Wextra
 
 .PHONY: all clean
 
-all: pa4 
+all: pa4-encfs
 
-pa4: pa4.o aes-crypt.o
+pa4-encfs : pa4-encfs.o aes-crypt.o
 	$(CC) $(LFLAGS) $^ -o $@ $(LLIBSFUSE) $(LLIBSOPENSSL)
 
-pa4.o: pa4.c
+pa4-encfs.o: pa4-encfs.c
 	$(CC) $(CFLAGS) $(CFLAGSFUSE) $<
 
 aes-crypt.o: aes-crypt.c aes-crypt.h
 	$(CC) $(CFLAGS) $<
 
 clean:
-	rm -f pa4
+	rm -f pa4-encfs
 	rm -f *.o
 	rm -f *~
-
-
