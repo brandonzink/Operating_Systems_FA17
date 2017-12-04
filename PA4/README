@@ -7,6 +7,12 @@ Clean: make clean
 
 ****Commands for pa4-encfs (after running make)****
 
+NOTE: the <Mirror Dir.> will emulate the <Mount Dir.>, so any change
+made in mount will show up in mirror encrypted. If there is something
+in the mirror directory is linked, then those files will also show up in 
+the mount directory, but neither will be encrypted, so start with empty 
+directories.
+
 Mount in debug mode on an existing empty directory with a key
 ./pa4-encfs -d <key> <Mirror Dir.> <Mount Dir.>
 
