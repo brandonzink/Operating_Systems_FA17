@@ -10,8 +10,7 @@ find the implimentation of this anywhere.
 #define ENCRYPT 1
 #define DECRYPT 0
 #define PASS -1
-#define ENC_XATTR "pa4-encfs.encrypted"
-#define DEBUG 1
+#define ENC_XATTR "user.enc"
 
 #ifdef HAVE_CONFIG_H
 #include <config.h>
@@ -46,8 +45,6 @@ typedef struct {
 //Gets the filepath stored in fuse_context in private data, stores in the in state struct "state"
 static void encfs_fullpath(char fpath[PATH_MAX], const char *path)
 {
-    if(DEBUG){printf("Entering fullpath.\n");}
-
     encfs_state *state = (encfs_state *) (fuse_get_context()->private_data);
     strcpy(fpath, state->rootdir);
     strncat(fpath, path, PATH_MAX);
@@ -57,8 +54,6 @@ static void encfs_fullpath(char fpath[PATH_MAX], const char *path)
 //Return file attributes.
 static int encfs_getattr(const char *path, struct stat *stbuf)
 {
-  if(DEBUG){printf("Entering getattr.\n");}
-
 	int res;
 
     char fullpath[PATH_MAX];
@@ -78,8 +73,6 @@ static int encfs_getattr(const char *path, struct stat *stbuf)
 //exist, -EACCESS if the requested permission isn't available, or 0 for success.
 static int encfs_access(const char *path, int amode)
 {
-  if(DEBUG){printf("Entering access.\n");}
-
 	int res;
 
     char fullpath[PATH_MAX];
